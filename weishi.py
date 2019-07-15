@@ -15,7 +15,6 @@ def read_video(filename):
             reader = csv.reader(csvfile)
             for reade in reader:
                url.append(reade[0])
-            # print(url)
             return url
     except:
         print('error')
@@ -40,7 +39,6 @@ def get_url(url):
         try:
             r = requests.get(fin_url,headers=headers)
             if r.status_code == 200:
-                # print(r.text)
                 return r.json()
 
         except Exception as e:
@@ -52,7 +50,6 @@ def get_video(json_):
             pararms = re.compile("'video_spec_urls'.*?'url': '(.*?)'")
             result = re.findall(pararms,str(json_))
             return result[0]
-            # print(result[0])
         else:
             print("get_video Not Found \'video_spec_urls\'")
             return None
